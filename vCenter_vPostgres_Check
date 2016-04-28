@@ -1,0 +1,82 @@
+psql -U postgres -H -f vppc.sql -o test.html
+
+/*Summary
+
+vCenter summary
+- postgres version
+- vCenter release
+- date runs
+
+*/
+
+
+select version();
+select version_value from vpx_version;
+select current_date;
+
+select relname, reltuples from pg_class where relname like 'vpx_hist%' order by 1;
+
+
+select relname, reltuples from pg_class where relname in ('vpx_event','vpx_event_arg','vpx_task','vpx_stat_counter','vpx_topn_past_day','vpx_topn_past_week','vpx_topn_past_month','vpx_topn_past_year') order by 1;
+
+--Procedures;
+
+ select
+    pp.proname,
+    pl.lanname,
+    pn.nspname
+from pg_proc pp
+inner join pg_namespace pn on (pp.pronamespace = pn.oid)
+inner join pg_language pl on (pp.prolang = pl.oid)
+where pl.lanname NOT IN ('c','internal')
+  and pn.nspname NOT LIKE 'pg_%'
+  and pn.nspname <> 'information_schema';
+
+
+SELECT  p.proname
+FROM    pg_catalog.pg_namespace n
+JOIN    pg_catalog.pg_proc p
+ON      p.pronamespace = n.oid
+WHERE   n.nspname = 'vc';
+
+select * from vpx_stat_interval_def;
+
+select * from vpx_job_log;
+
+
+
+--General database health check
+-- table size
+SELECT nspname || '.' || relname AS "relation", relkind,
+    pg_size_pretty(pg_total_relation_size(C.oid)) AS "total_size"
+  FROM pg_class C
+  LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace)
+  WHERE nspname NOT IN ('pg_catalog', 'information_schema')
+    AND C.relkind = 'i'
+    AND relname like '%vpx_event%'
+ORDER BY pg_total_relation_size(C.oid) DESC;
+
+-- index size
+select relid::regclass as table, indexrelid:: regclass as index,
+pg_size_pretty(pg_relation_size(indexrelid::regclass)) as index_size, idx_tup_read, idx_tup_fetch, idx_scan
+from pg_stat_user_indexes
+join pg_index using (indexrelid)
+where idx_scan = 0
+and indisunique is false;
+
+SELECT table_name
+,pg_relation_size(table_name) as size
+FROM information_schema.tables
+WHERE table_schema NOT IN ('information_schema',
+'pg_catalog')
+ORDER BY size DESC
+LIMIT 10;
+
+show all;
+
+
+-- top 5 problematic tables 
+ \d vpx_event; \d vpx_event_arg; \d vpx_task; 
+
+-- Transaction ID checks
+select txid_current(), txid_current_snapshot();
