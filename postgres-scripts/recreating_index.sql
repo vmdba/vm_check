@@ -2,7 +2,9 @@ select pg_get_indexdef(indexrelid) from pg_index where indrelid::regclass::text 
 
 
 
-Sample output:
+Sample output: 
+Description: This works sort of like Oracle DBMS_METADATA.GET_DDL Package
+
 
 vcdb=# select indexrelid::regclass::text , indrelid::regclass, indisvalid, indisready from pg_index where indexrelid::regclass::text = 'pk_vpx_entity';
   indexrelid   |  indrelid  | indisvalid | indisready
