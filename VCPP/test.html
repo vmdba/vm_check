@@ -1,0 +1,1401 @@
+<p>SET</p>
+<table border="2">
+  <tr>
+    <th align="center">Description and Disclaimer</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">This is VCPP - vCenter Proactive Postgres Check to detect common issues of vCenter. This script is similar to VPOC that created for vCenter running on Oracle. There is nothing destructive in this script but still I should warn you that use-at-your-own-risk.</td>
+  </tr>
+</table>
+<p>(1 row)<br />
+</p>
+<table border="2">
+  <caption>DB Version</caption>
+  <tr>
+    <th align="center">version</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">PostgreSQL 9.2.9 on x86_64-unknown-linux-gnu, compiled by gcc (GCC) 4.4.7 20120313 (Red Hat 4.4.7-4), 64-bit</td>
+  </tr>
+</table>
+<p>(1 row)<br />
+</p>
+<table border="2">
+  <caption>Script ran</caption>
+  <tr>
+    <th align="center">date</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">Today date : 2016-05-10</td>
+  </tr>
+</table>
+<p>(1 row)<br />
+</p>
+<table border="2">
+  <caption>Hist Stat Data</caption>
+  <tr>
+    <th align="center">Table Name</th>
+    <th align="center">Counts</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Hist Stat Data</caption>
+  <tr>
+    <th align="center">modification</th>
+    <th align="center">datname</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">2014-12-17 19:18:24-05</td>
+    <td align="left">template1</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">2014-12-17 19:18:27-05</td>
+    <td align="left">template0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">2014-12-17 19:18:27-05</td>
+    <td align="left">postgres</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">2016-04-27 17:05:45-04</td>
+    <td align="left">vcdb</td>
+  </tr>
+</table>
+<p>(4 rows)<br />
+</p>
+<table border="2">
+  <caption>Hist Stat Data</caption>
+  <tr>
+    <th align="center">Table Name</th>
+    <th align="center">Counts</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Hist Stat Data</caption>
+  <tr>
+    <th align="center">Table Name</th>
+    <th align="center">Counts</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Procedures</caption>
+  <tr>
+    <th align="center">Procedure Name</th>
+    <th align="center">Object Type</th>
+    <th align="center">Owner </th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>KB Reference</caption>
+  <tr>
+    <th align="center">URL Link</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">https://ikb.vmware.com/kb/2033096 </td>
+  </tr>
+</table>
+<p>(1 row)<br />
+</p>
+<table border="2">
+  <caption>Procedure Source Codes</caption>
+  <tr>
+    <th align="center">Procedure Name</th>
+    <th align="center">Object Type</th>
+    <th align="center">Owner </th>
+    <th align="center">Source Codes</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Procedure Source Codes</caption>
+  <tr>
+    <th align="center">proname</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Procedure Source Codes</caption>
+  <tr>
+    <th align="center">proname</th>
+    <th align="center">prosrc</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Important Indexes</caption>
+  <tr>
+    <th align="center">relation</th>
+    <th align="center">relkind</th>
+    <th align="center">total_size</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Important Indexes</caption>
+  <tr>
+    <th align="center">table</th>
+    <th align="center">index</th>
+    <th align="center">index_size</th>
+    <th align="center">idx_tup_read</th>
+    <th align="center">idx_tup_fetch</th>
+    <th align="center">idx_scan</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Important Indexes</caption>
+  <tr>
+    <th align="center">table_name</th>
+    <th align="center">size</th>
+  </tr>
+</table>
+<p>(0 rows)<br />
+</p>
+<table border="2">
+  <caption>Top 5 problematic tables</caption>
+  <tr>
+    <th align="center">name</th>
+    <th align="center">setting</th>
+    <th align="center">description</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">allow_system_table_mods</td>
+    <td align="left">off</td>
+    <td align="left">Allows modifications of the structure of system tables.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">application_name</td>
+    <td align="left">psql</td>
+    <td align="left">Sets the application name to be reported in statistics and logs.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">archive_command</td>
+    <td align="left">(disabled)</td>
+    <td align="left">Sets the shell command that will be called to archive a WAL file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">archive_mode</td>
+    <td align="left">off</td>
+    <td align="left">Allows archiving of WAL files using archive_command.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">archive_timeout</td>
+    <td align="left">0</td>
+    <td align="left">Forces a switch to the next xlog file if a new file has not been started within N seconds.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">array_nulls</td>
+    <td align="left">on</td>
+    <td align="left">Enable input of NULL elements in arrays.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">authentication_timeout</td>
+    <td align="left">1min</td>
+    <td align="left">Sets the maximum allowed time to complete client authentication.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum</td>
+    <td align="left">on</td>
+    <td align="left">Starts the autovacuum subprocess.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_analyze_scale_factor</td>
+    <td align="left">0.1</td>
+    <td align="left">Number of tuple inserts, updates, or deletes prior to analyze as a fraction of reltuples.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_analyze_threshold</td>
+    <td align="left">50</td>
+    <td align="left">Minimum number of tuple inserts, updates, or deletes prior to analyze.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_freeze_max_age</td>
+    <td align="left">200000000</td>
+    <td align="left">Age at which to autovacuum a table to prevent transaction ID wraparound.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_max_workers</td>
+    <td align="left">3</td>
+    <td align="left">Sets the maximum number of simultaneously running autovacuum worker processes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_naptime</td>
+    <td align="left">1min</td>
+    <td align="left">Time to sleep between autovacuum runs.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_vacuum_cost_delay</td>
+    <td align="left">20ms</td>
+    <td align="left">Vacuum cost delay in milliseconds, for autovacuum.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_vacuum_cost_limit</td>
+    <td align="left">-1</td>
+    <td align="left">Vacuum cost amount available before napping, for autovacuum.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_vacuum_scale_factor</td>
+    <td align="left">0.2</td>
+    <td align="left">Number of tuple updates or deletes prior to vacuum as a fraction of reltuples.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">autovacuum_vacuum_threshold</td>
+    <td align="left">50</td>
+    <td align="left">Minimum number of tuple updates or deletes prior to vacuum.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">backslash_quote</td>
+    <td align="left">safe_encoding</td>
+    <td align="left">Sets whether &quot;\'&quot; is allowed in string literals.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">bgwriter_delay</td>
+    <td align="left">200ms</td>
+    <td align="left">Background writer sleep time between rounds.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">bgwriter_lru_maxpages</td>
+    <td align="left">100</td>
+    <td align="left">Background writer maximum number of LRU pages to flush per round.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">bgwriter_lru_multiplier</td>
+    <td align="left">2</td>
+    <td align="left">Multiple of the average buffer usage to free per round.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">block_size</td>
+    <td align="left">8192</td>
+    <td align="left">Shows the size of a disk block.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">bonjour</td>
+    <td align="left">off</td>
+    <td align="left">Enables advertising the server via Bonjour.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">bonjour_name</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Sets the Bonjour service name.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">bytea_output</td>
+    <td align="left">hex</td>
+    <td align="left">Sets the output format for bytea.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">check_function_bodies</td>
+    <td align="left">on</td>
+    <td align="left">Check function bodies during CREATE FUNCTION.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">checkpoint_completion_target</td>
+    <td align="left">0.5</td>
+    <td align="left">Time spent flushing dirty buffers during checkpoint, as fraction of checkpoint interval.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">checkpoint_segments</td>
+    <td align="left">3</td>
+    <td align="left">Sets the maximum distance in log segments between automatic WAL checkpoints.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">checkpoint_timeout</td>
+    <td align="left">5min</td>
+    <td align="left">Sets the maximum time between automatic WAL checkpoints.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">checkpoint_warning</td>
+    <td align="left">30s</td>
+    <td align="left">Enables warnings if checkpoint segments are filled more frequently than this.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">client_encoding</td>
+    <td align="left">UTF8</td>
+    <td align="left">Sets the client's character set encoding.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">client_min_messages</td>
+    <td align="left">notice</td>
+    <td align="left">Sets the message levels that are sent to the client.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">commit_delay</td>
+    <td align="left">0</td>
+    <td align="left">Sets the delay in microseconds between transaction commit and flushing WAL to disk.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">commit_siblings</td>
+    <td align="left">5</td>
+    <td align="left">Sets the minimum concurrent open transactions before performing commit_delay.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">config_file</td>
+    <td align="left">/var/lib/pgsql/9.2/data/postgresql.conf</td>
+    <td align="left">Sets the server's main configuration file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">constraint_exclusion</td>
+    <td align="left">partition</td>
+    <td align="left">Enables the planner to use constraints to optimize queries.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">cpu_index_tuple_cost</td>
+    <td align="left">0.005</td>
+    <td align="left">Sets the planner's estimate of the cost of processing each index entry during an index scan.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">cpu_operator_cost</td>
+    <td align="left">0.0025</td>
+    <td align="left">Sets the planner's estimate of the cost of processing each operator or function call.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">cpu_tuple_cost</td>
+    <td align="left">0.01</td>
+    <td align="left">Sets the planner's estimate of the cost of processing each tuple (row).</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">cursor_tuple_fraction</td>
+    <td align="left">0.1</td>
+    <td align="left">Sets the planner's estimate of the fraction of a cursor's rows that will be retrieved.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">data_directory</td>
+    <td align="left">/var/lib/pgsql/9.2/data</td>
+    <td align="left">Sets the server's data directory.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">DateStyle</td>
+    <td align="left">ISO, MDY</td>
+    <td align="left">Sets the display format for date and time values.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">db_user_namespace</td>
+    <td align="left">off</td>
+    <td align="left">Enables per-database user names.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">deadlock_timeout</td>
+    <td align="left">1s</td>
+    <td align="left">Sets the time to wait on a lock before checking for deadlock.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">debug_assertions</td>
+    <td align="left">off</td>
+    <td align="left">Turns on various assertion checks.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">debug_pretty_print</td>
+    <td align="left">on</td>
+    <td align="left">Indents parse and plan tree displays.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">debug_print_parse</td>
+    <td align="left">off</td>
+    <td align="left">Logs each query's parse tree.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">debug_print_plan</td>
+    <td align="left">off</td>
+    <td align="left">Logs each query's execution plan.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">debug_print_rewritten</td>
+    <td align="left">off</td>
+    <td align="left">Logs each query's rewritten parse tree.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">default_statistics_target</td>
+    <td align="left">100</td>
+    <td align="left">Sets the default statistics target.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">default_tablespace</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Sets the default tablespace to create tables and indexes in.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">default_text_search_config</td>
+    <td align="left">pg_catalog.english</td>
+    <td align="left">Sets default text search configuration.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">default_transaction_deferrable</td>
+    <td align="left">off</td>
+    <td align="left">Sets the default deferrable status of new transactions.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">default_transaction_isolation</td>
+    <td align="left">read committed</td>
+    <td align="left">Sets the transaction isolation level of each new transaction.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">default_transaction_read_only</td>
+    <td align="left">off</td>
+    <td align="left">Sets the default read-only status of new transactions.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">default_with_oids</td>
+    <td align="left">off</td>
+    <td align="left">Create new tables with OIDs by default.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">dynamic_library_path</td>
+    <td align="left">$libdir</td>
+    <td align="left">Sets the path for dynamically loadable modules.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">effective_cache_size</td>
+    <td align="left">128MB</td>
+    <td align="left">Sets the planner's assumption about the size of the disk cache.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">effective_io_concurrency</td>
+    <td align="left">1</td>
+    <td align="left">Number of simultaneous requests that can be handled efficiently by the disk subsystem.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_bitmapscan</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of bitmap-scan plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_hashagg</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of hashed aggregation plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_hashjoin</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of hash join plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_indexonlyscan</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of index-only-scan plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_indexscan</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of index-scan plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_material</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of materialization.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_mergejoin</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of merge join plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_nestloop</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of nested-loop join plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_seqscan</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of sequential-scan plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_sort</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of explicit sort steps.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">enable_tidscan</td>
+    <td align="left">on</td>
+    <td align="left">Enables the planner's use of TID scan plans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">escape_string_warning</td>
+    <td align="left">on</td>
+    <td align="left">Warn about backslash escapes in ordinary string literals.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">event_source</td>
+    <td align="left">PostgreSQL</td>
+    <td align="left">Sets the application name used to identify PostgreSQL messages in the event log.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">exit_on_error</td>
+    <td align="left">off</td>
+    <td align="left">Terminate session on any error.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">external_pid_file</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Writes the postmaster PID to the specified file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">extra_float_digits</td>
+    <td align="left">0</td>
+    <td align="left">Sets the number of digits displayed for floating-point values.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">from_collapse_limit</td>
+    <td align="left">8</td>
+    <td align="left">Sets the FROM-list size beyond which subqueries are not collapsed.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">fsync</td>
+    <td align="left">on</td>
+    <td align="left">Forces synchronization of updates to disk.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">full_page_writes</td>
+    <td align="left">on</td>
+    <td align="left">Writes full pages to WAL when first modified after a checkpoint.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">geqo</td>
+    <td align="left">on</td>
+    <td align="left">Enables genetic query optimization.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">geqo_effort</td>
+    <td align="left">5</td>
+    <td align="left">GEQO: effort is used to set the default for other GEQO parameters.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">geqo_generations</td>
+    <td align="left">0</td>
+    <td align="left">GEQO: number of iterations of the algorithm.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">geqo_pool_size</td>
+    <td align="left">0</td>
+    <td align="left">GEQO: number of individuals in the population.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">geqo_seed</td>
+    <td align="left">0</td>
+    <td align="left">GEQO: seed for random path selection.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">geqo_selection_bias</td>
+    <td align="left">2</td>
+    <td align="left">GEQO: selective pressure within the population.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">geqo_threshold</td>
+    <td align="left">12</td>
+    <td align="left">Sets the threshold of FROM items beyond which GEQO is used.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">gin_fuzzy_search_limit</td>
+    <td align="left">0</td>
+    <td align="left">Sets the maximum allowed result for exact search by GIN.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">hba_file</td>
+    <td align="left">/var/lib/pgsql/9.2/data/pg_hba.conf</td>
+    <td align="left">Sets the server's &quot;hba&quot; configuration file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">hot_standby</td>
+    <td align="left">off</td>
+    <td align="left">Allows connections and queries during recovery.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">hot_standby_feedback</td>
+    <td align="left">off</td>
+    <td align="left">Allows feedback from a hot standby to the primary that will avoid query conflicts.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ident_file</td>
+    <td align="left">/var/lib/pgsql/9.2/data/pg_ident.conf</td>
+    <td align="left">Sets the server's &quot;ident&quot; configuration file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ignore_system_indexes</td>
+    <td align="left">off</td>
+    <td align="left">Disables reading from system indexes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">integer_datetimes</td>
+    <td align="left">on</td>
+    <td align="left">Datetimes are integer based.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">IntervalStyle</td>
+    <td align="left">postgres</td>
+    <td align="left">Sets the display format for interval values.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">join_collapse_limit</td>
+    <td align="left">8</td>
+    <td align="left">Sets the FROM-list size beyond which JOIN constructs are not flattened.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">krb_caseins_users</td>
+    <td align="left">off</td>
+    <td align="left">Sets whether Kerberos and GSSAPI user names should be treated as case-insensitive.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">krb_server_keyfile</td>
+    <td align="left">FILE:/etc/sysconfig/pgsql/krb5.keytab</td>
+    <td align="left">Sets the location of the Kerberos server key file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">krb_srvname</td>
+    <td align="left">postgres</td>
+    <td align="left">Sets the name of the Kerberos service.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">lc_collate</td>
+    <td align="left">en_US.UTF-8</td>
+    <td align="left">Shows the collation order locale.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">lc_ctype</td>
+    <td align="left">en_US.UTF-8</td>
+    <td align="left">Shows the character classification and case conversion locale.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">lc_messages</td>
+    <td align="left">en_US.UTF-8</td>
+    <td align="left">Sets the language in which messages are displayed.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">lc_monetary</td>
+    <td align="left">en_US.UTF-8</td>
+    <td align="left">Sets the locale for formatting monetary amounts.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">lc_numeric</td>
+    <td align="left">en_US.UTF-8</td>
+    <td align="left">Sets the locale for formatting numbers.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">lc_time</td>
+    <td align="left">en_US.UTF-8</td>
+    <td align="left">Sets the locale for formatting date and time values.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">listen_addresses</td>
+    <td align="left">localhost</td>
+    <td align="left">Sets the host name or IP address(es) to listen to.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">lo_compat_privileges</td>
+    <td align="left">off</td>
+    <td align="left">Enables backward compatibility mode for privilege checks on large objects.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">local_preload_libraries</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Lists shared libraries to preload into each backend.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_autovacuum_min_duration</td>
+    <td align="left">-1</td>
+    <td align="left">Sets the minimum execution time above which autovacuum actions will be logged.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_checkpoints</td>
+    <td align="left">off</td>
+    <td align="left">Logs each checkpoint.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_connections</td>
+    <td align="left">off</td>
+    <td align="left">Logs each successful connection.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_destination</td>
+    <td align="left">stderr</td>
+    <td align="left">Sets the destination for server log output.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_directory</td>
+    <td align="left">pg_log</td>
+    <td align="left">Sets the destination directory for log files.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_disconnections</td>
+    <td align="left">off</td>
+    <td align="left">Logs end of a session, including duration.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_duration</td>
+    <td align="left">off</td>
+    <td align="left">Logs the duration of each completed SQL statement.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_error_verbosity</td>
+    <td align="left">default</td>
+    <td align="left">Sets the verbosity of logged messages.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_executor_stats</td>
+    <td align="left">off</td>
+    <td align="left">Writes executor performance statistics to the server log.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_file_mode</td>
+    <td align="left">0600</td>
+    <td align="left">Sets the file permissions for log files.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_filename</td>
+    <td align="left">postgresql-%a.log</td>
+    <td align="left">Sets the file name pattern for log files.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_hostname</td>
+    <td align="left">off</td>
+    <td align="left">Logs the host name in the connection logs.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_line_prefix</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Controls information prefixed to each log line.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_lock_waits</td>
+    <td align="left">off</td>
+    <td align="left">Logs long lock waits.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_min_duration_statement</td>
+    <td align="left">-1</td>
+    <td align="left">Sets the minimum execution time above which statements will be logged.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_min_error_statement</td>
+    <td align="left">error</td>
+    <td align="left">Causes all statements generating error at or above this level to be logged.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_min_messages</td>
+    <td align="left">warning</td>
+    <td align="left">Sets the message levels that are logged.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_parser_stats</td>
+    <td align="left">off</td>
+    <td align="left">Writes parser performance statistics to the server log.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_planner_stats</td>
+    <td align="left">off</td>
+    <td align="left">Writes planner performance statistics to the server log.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_rotation_age</td>
+    <td align="left">1d</td>
+    <td align="left">Automatic log file rotation will occur after N minutes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_rotation_size</td>
+    <td align="left">0</td>
+    <td align="left">Automatic log file rotation will occur after N kilobytes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_statement</td>
+    <td align="left">none</td>
+    <td align="left">Sets the type of statements logged.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_statement_stats</td>
+    <td align="left">off</td>
+    <td align="left">Writes cumulative performance statistics to the server log.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_temp_files</td>
+    <td align="left">-1</td>
+    <td align="left">Log the use of temporary files larger than this number of kilobytes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_timezone</td>
+    <td align="left">US/Eastern</td>
+    <td align="left">Sets the time zone to use in log messages.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">log_truncate_on_rotation</td>
+    <td align="left">on</td>
+    <td align="left">Truncate existing log files of same name during log rotation.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">logging_collector</td>
+    <td align="left">on</td>
+    <td align="left">Start a subprocess to capture stderr output and/or csvlogs into log files.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">maintenance_work_mem</td>
+    <td align="left">16MB</td>
+    <td align="left">Sets the maximum memory to be used for maintenance operations.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_connections</td>
+    <td align="left">100</td>
+    <td align="left">Sets the maximum number of concurrent connections.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_files_per_process</td>
+    <td align="left">1000</td>
+    <td align="left">Sets the maximum number of simultaneously open files for each server process.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_function_args</td>
+    <td align="left">100</td>
+    <td align="left">Shows the maximum number of function arguments.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_identifier_length</td>
+    <td align="left">63</td>
+    <td align="left">Shows the maximum identifier length.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_index_keys</td>
+    <td align="left">32</td>
+    <td align="left">Shows the maximum number of index keys.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_locks_per_transaction</td>
+    <td align="left">64</td>
+    <td align="left">Sets the maximum number of locks per transaction.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_pred_locks_per_transaction</td>
+    <td align="left">64</td>
+    <td align="left">Sets the maximum number of predicate locks per transaction.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_prepared_transactions</td>
+    <td align="left">0</td>
+    <td align="left">Sets the maximum number of simultaneously prepared transactions.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_stack_depth</td>
+    <td align="left">2MB</td>
+    <td align="left">Sets the maximum stack depth, in kilobytes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_standby_archive_delay</td>
+    <td align="left">30s</td>
+    <td align="left">Sets the maximum delay before canceling queries when a hot standby server is processing archived WAL data.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_standby_streaming_delay</td>
+    <td align="left">30s</td>
+    <td align="left">Sets the maximum delay before canceling queries when a hot standby server is processing streamed WAL data.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_wal_senders</td>
+    <td align="left">0</td>
+    <td align="left">Sets the maximum number of simultaneously running WAL sender processes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">password_encryption</td>
+    <td align="left">on</td>
+    <td align="left">Encrypt passwords.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">port</td>
+    <td align="left">5432</td>
+    <td align="left">Sets the TCP port the server listens on.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">post_auth_delay</td>
+    <td align="left">0</td>
+    <td align="left">Waits N seconds on connection startup after authentication.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">pre_auth_delay</td>
+    <td align="left">0</td>
+    <td align="left">Waits N seconds on connection startup before authentication.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">quote_all_identifiers</td>
+    <td align="left">off</td>
+    <td align="left">When generating SQL fragments, quote all identifiers.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">random_page_cost</td>
+    <td align="left">4</td>
+    <td align="left">Sets the planner's estimate of the cost of a nonsequentially fetched disk page.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">replication_timeout</td>
+    <td align="left">1min</td>
+    <td align="left">Sets the maximum time to wait for WAL replication.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">restart_after_crash</td>
+    <td align="left">on</td>
+    <td align="left">Reinitialize server after backend crash.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">search_path</td>
+    <td align="left">vpx, public</td>
+    <td align="left">Sets the schema search order for names that are not schema-qualified.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">segment_size</td>
+    <td align="left">1GB</td>
+    <td align="left">Shows the number of pages per disk file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">seq_page_cost</td>
+    <td align="left">1</td>
+    <td align="left">Sets the planner's estimate of the cost of a sequentially fetched disk page.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">server_encoding</td>
+    <td align="left">UTF8</td>
+    <td align="left">Sets the server (database) character set encoding.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">server_version</td>
+    <td align="left">9.2.9</td>
+    <td align="left">Shows the server version.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">server_version_num</td>
+    <td align="left">90209</td>
+    <td align="left">Shows the server version as an integer.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">session_replication_role</td>
+    <td align="left">origin</td>
+    <td align="left">Sets the session's behavior for triggers and rewrite rules.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">shared_buffers</td>
+    <td align="left">32MB</td>
+    <td align="left">Sets the number of shared memory buffers used by the server.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">shared_preload_libraries</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Lists shared libraries to preload into server.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">sql_inheritance</td>
+    <td align="left">on</td>
+    <td align="left">Causes subtables to be included by default in various commands.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ssl</td>
+    <td align="left">off</td>
+    <td align="left">Enables SSL connections.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ssl_ca_file</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Location of the SSL certificate authority file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ssl_cert_file</td>
+    <td align="left">server.crt</td>
+    <td align="left">Location of the SSL server certificate file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ssl_ciphers</td>
+    <td align="left">ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH</td>
+    <td align="left">Sets the list of allowed SSL ciphers.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ssl_crl_file</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Location of the SSL certificate revocation list file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ssl_key_file</td>
+    <td align="left">server.key</td>
+    <td align="left">Location of the SSL server private key file.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ssl_renegotiation_limit</td>
+    <td align="left">512MB</td>
+    <td align="left">Set the amount of traffic to send and receive before renegotiating the encryption keys.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">standard_conforming_strings</td>
+    <td align="left">on</td>
+    <td align="left">Causes '...' strings to treat backslashes literally.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">statement_timeout</td>
+    <td align="left">0</td>
+    <td align="left">Sets the maximum allowed duration of any statement.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">stats_temp_directory</td>
+    <td align="left">pg_stat_tmp</td>
+    <td align="left">Writes temporary statistics files to the specified directory.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">superuser_reserved_connections</td>
+    <td align="left">3</td>
+    <td align="left">Sets the number of connection slots reserved for superusers.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">synchronize_seqscans</td>
+    <td align="left">on</td>
+    <td align="left">Enable synchronized sequential scans.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">synchronous_commit</td>
+    <td align="left">on</td>
+    <td align="left">Sets the current transaction's synchronization level.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">synchronous_standby_names</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">List of names of potential synchronous standbys.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">syslog_facility</td>
+    <td align="left">local0</td>
+    <td align="left">Sets the syslog &quot;facility&quot; to be used when syslog enabled.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">syslog_ident</td>
+    <td align="left">postgres</td>
+    <td align="left">Sets the program name used to identify PostgreSQL messages in syslog.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">tcp_keepalives_count</td>
+    <td align="left">0</td>
+    <td align="left">Maximum number of TCP keepalive retransmits.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">tcp_keepalives_idle</td>
+    <td align="left">0</td>
+    <td align="left">Time between issuing TCP keepalives.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">tcp_keepalives_interval</td>
+    <td align="left">0</td>
+    <td align="left">Time between TCP keepalive retransmits.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">temp_buffers</td>
+    <td align="left">8MB</td>
+    <td align="left">Sets the maximum number of temporary buffers used by each session.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">temp_file_limit</td>
+    <td align="left">-1</td>
+    <td align="left">Limits the total size of all temporary files used by each session.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">temp_tablespaces</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Sets the tablespace(s) to use for temporary tables and sort files.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">TimeZone</td>
+    <td align="left">US/Eastern</td>
+    <td align="left">Sets the time zone for displaying and interpreting time stamps.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">timezone_abbreviations</td>
+    <td align="left">Default</td>
+    <td align="left">Selects a file of time zone abbreviations.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">trace_notify</td>
+    <td align="left">off</td>
+    <td align="left">Generates debugging output for LISTEN and NOTIFY.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">trace_recovery_messages</td>
+    <td align="left">log</td>
+    <td align="left">Enables logging of recovery-related debugging information.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">trace_sort</td>
+    <td align="left">off</td>
+    <td align="left">Emit information about resource usage in sorting.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">track_activities</td>
+    <td align="left">on</td>
+    <td align="left">Collects information about executing commands.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">track_activity_query_size</td>
+    <td align="left">1024</td>
+    <td align="left">Sets the size reserved for pg_stat_activity.query, in bytes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">track_counts</td>
+    <td align="left">on</td>
+    <td align="left">Collects statistics on database activity.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">track_functions</td>
+    <td align="left">none</td>
+    <td align="left">Collects function-level statistics on database activity.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">track_io_timing</td>
+    <td align="left">off</td>
+    <td align="left">Collects timing statistics for database I/O activity.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">transaction_deferrable</td>
+    <td align="left">off</td>
+    <td align="left">Whether to defer a read-only serializable transaction until it can be executed with no possible serialization failures.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">transaction_isolation</td>
+    <td align="left">read committed</td>
+    <td align="left">Sets the current transaction's isolation level.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">transaction_read_only</td>
+    <td align="left">off</td>
+    <td align="left">Sets the current transaction's read-only status.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">transform_null_equals</td>
+    <td align="left">off</td>
+    <td align="left">Treats &quot;expr=NULL&quot; as &quot;expr IS NULL&quot;.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">unix_socket_directory</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Sets the directory where the Unix-domain socket will be created.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">unix_socket_group</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Sets the owning group of the Unix-domain socket.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">unix_socket_permissions</td>
+    <td align="left">0777</td>
+    <td align="left">Sets the access permissions of the Unix-domain socket.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">update_process_title</td>
+    <td align="left">on</td>
+    <td align="left">Updates the process title to show the active SQL command.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_cost_delay</td>
+    <td align="left">0</td>
+    <td align="left">Vacuum cost delay in milliseconds.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_cost_limit</td>
+    <td align="left">200</td>
+    <td align="left">Vacuum cost amount available before napping.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_cost_page_dirty</td>
+    <td align="left">20</td>
+    <td align="left">Vacuum cost for a page dirtied by vacuum.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_cost_page_hit</td>
+    <td align="left">1</td>
+    <td align="left">Vacuum cost for a page found in the buffer cache.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_cost_page_miss</td>
+    <td align="left">10</td>
+    <td align="left">Vacuum cost for a page not found in the buffer cache.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_defer_cleanup_age</td>
+    <td align="left">0</td>
+    <td align="left">Number of transactions by which VACUUM and HOT cleanup should be deferred, if any.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_freeze_min_age</td>
+    <td align="left">50000000</td>
+    <td align="left">Minimum age at which VACUUM should freeze a table row.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">vacuum_freeze_table_age</td>
+    <td align="left">150000000</td>
+    <td align="left">Age at which VACUUM should scan whole table to freeze tuples.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_block_size</td>
+    <td align="left">8192</td>
+    <td align="left">Shows the block size in the write ahead log.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_buffers</td>
+    <td align="left">1MB</td>
+    <td align="left">Sets the number of disk-page buffers in shared memory for WAL.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_keep_segments</td>
+    <td align="left">0</td>
+    <td align="left">Sets the number of WAL files held for standby servers.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_level</td>
+    <td align="left">minimal</td>
+    <td align="left">Set the level of information written to the WAL.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_receiver_status_interval</td>
+    <td align="left">10s</td>
+    <td align="left">Sets the maximum interval between WAL receiver status reports to the primary.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_segment_size</td>
+    <td align="left">16MB</td>
+    <td align="left">Shows the number of pages per write ahead log segment.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_sync_method</td>
+    <td align="left">fdatasync</td>
+    <td align="left">Selects the method used for forcing WAL updates to disk.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_writer_delay</td>
+    <td align="left">200ms</td>
+    <td align="left">WAL writer sleep time between WAL flushes.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">work_mem</td>
+    <td align="left">1MB</td>
+    <td align="left">Sets the maximum memory to be used for query workspaces.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">xmlbinary</td>
+    <td align="left">base64</td>
+    <td align="left">Sets how binary values are to be encoded in XML.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">xmloption</td>
+    <td align="left">content</td>
+    <td align="left">Sets whether XML data in implicit parsing and serialization operations is to be considered as documents or content fragments.</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">zero_damaged_pages</td>
+    <td align="left">off</td>
+    <td align="left">Continues processing past damaged page headers.</td>
+  </tr>
+</table>
+<p>(224 rows)<br />
+</p>
+<table border="2">
+  <caption>Files</caption>
+  <tr>
+    <th align="center">name</th>
+    <th align="center">setting</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">config_file</td>
+    <td align="left">/var/lib/pgsql/9.2/data/postgresql.conf</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">data_directory</td>
+    <td align="left">/var/lib/pgsql/9.2/data</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">external_pid_file</td>
+    <td align="left">&nbsp; </td>
+  </tr>
+  <tr valign="top">
+    <td align="left">hba_file</td>
+    <td align="left">/var/lib/pgsql/9.2/data/pg_hba.conf</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">ident_file</td>
+    <td align="left">/var/lib/pgsql/9.2/data/pg_ident.conf</td>
+  </tr>
+</table>
+<p>(5 rows)<br />
+</p>
+<table border="2">
+  <caption>Memory and Buffers</caption>
+  <tr>
+    <th align="center">name</th>
+    <th align="center">context</th>
+    <th align="center">unit</th>
+    <th align="center">setting</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_connections</td>
+    <td align="left">postmaster</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">100</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">shared_buffers</td>
+    <td align="left">postmaster</td>
+    <td align="left">8kB</td>
+    <td align="left">4096</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">effective_cache_size</td>
+    <td align="left">user</td>
+    <td align="left">8kB</td>
+    <td align="left">16384</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">maintenance_work_mem</td>
+    <td align="left">user</td>
+    <td align="left">kB</td>
+    <td align="left">16384</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">work_mem</td>
+    <td align="left">user</td>
+    <td align="left">kB</td>
+    <td align="left">1024</td>
+  </tr>
+</table>
+<p>(5 rows)<br />
+</p>
+<table border="2">
+  <caption>Archive Setup</caption>
+  <tr>
+    <th align="center">name</th>
+    <th align="center">context</th>
+    <th align="center">unit</th>
+    <th align="center">setting</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">archive_command</td>
+    <td align="left">sighup</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">(disabled)</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">archive_mode</td>
+    <td align="left">postmaster</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">off</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">archive_timeout</td>
+    <td align="left">sighup</td>
+    <td align="left">s</td>
+    <td align="left">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_standby_archive_delay</td>
+    <td align="left">sighup</td>
+    <td align="left">ms</td>
+    <td align="left">30000</td>
+  </tr>
+</table>
+<p>(4 rows)<br />
+</p>
