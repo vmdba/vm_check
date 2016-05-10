@@ -1,0 +1,47 @@
+\set user vc
+
+SELECT pg_catalog.pg_relation_filenode(c.oid) as "Object ID", relname as "Object Name",
+case WHEN relkind='r' THEN 'Table'
+     when relkind='m' THEN 'Materialized View'
+     when relkind='i' THEN 'Index'
+     when relkind='S' THEN 'Sequence'
+     when relkind='t' THEN 'Toast'
+     when relkind='v' THEN 'View'
+     when relkind='c' THEN 'Composite'
+     when relkind='f' THEN 'Foreign_Table'
+     ELSE 'other'
+    end
+     as "Object Type", o.rolname as "Owner"
+FROM pg_catalog.pg_class c
+        LEFT JOIN pg_catalog.pg_authid o ON o.oid=c.relowner
+        LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+        LEFT JOIN pg_catalog.pg_database d ON d.datname = pg_catalog.current_database(),
+        pg_catalog.pg_tablespace t
+WHERE  o.rolname = :'user'
+and   t.oid = CASE
+                        WHEN reltablespace <> 0 THEN reltablespace
+                        ELSE dattablespace
+                END ;
+
+
+Sample output:
+Object ID |          Object Name           | Object Type | Owner
+-----------+--------------------------------+-------------+-------
+     16447 | vpx_access_seq                 | Sequence    | vc
+     16452 | pg_toast_16449                 | Toast       | vc
+     16444 | vpx_access                     | Table       | vc
+     16454 | pg_toast_16449_index           | Index       | vc
+     16462 | pg_toast_16455                 | Toast       | vc
+     16464 | pg_toast_16455_index           | Index       | vc
+     16472 | pg_toast_16468                 | Toast       | vc
+     16474 | pg_toast_16468_index           | Index       | vc
+     16468 | vpx_alarm_expr_comp            | Table       | vc
+     16478 | pg_toast_16475                 | Toast       | vc
+     16480 | pg_toast_16475_index           | Index       | vc
+     16508 | vpx_binary_data                | Table       | vc
+     16481 | vpx_alarm_repeat_action        | Table       | vc
+     16484 | pg_toast_16481                 | Toast       | vc
+     16486 | pg_toast_16481_index           | Index       | vc
+     16495 | vpx_alarm_state                | Table       | vc
+     16487 | vpx_alarm_runtime              | Table       | vc
+     16490 | pg_toast_16487                 | Toast       | vc
