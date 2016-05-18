@@ -117,3 +117,5 @@ select name, context, unit, setting from pg_settings where name in ('listen_addr
 \pset title 'Archive Setup'
 select name, context, unit, setting from pg_settings where name like '%archive%';
 
+\pset title 'vCenter parameters'
+select * from vpx_parameter;
