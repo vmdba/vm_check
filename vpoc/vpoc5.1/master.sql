@@ -21,3 +21,5 @@ alter session set nls_date_format = 'MM/DD/YY HH24:MI:SS';
 @stat_view.sql
 @priv_brief.sql
 @summary.sql
+@Upgrade_views.sql
+@vpx_parameter.sql
