@@ -1,18 +1,38 @@
---set search_path to vpx, public;
 /*
 Author: Kay Liew
 Date Created: May 12 2015
 Description: A little script just to ease my job. I reserve the rights to add or remove contents in this script as I see fits.
+How to run: sudo -u postgres psql -d vcdb -U vc -f vppc.sql -o vppc.diag
+How to run in html format: sudo psql -U postgres -H -f vppc.sql -o vppc_diag.html
+
+For VCSA environment:
+
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -f vppc.sql -o vppc.diag > vppc1.diag
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -H -f vppc.sql -o vppc_diag.html > vppc1_diag.html
+
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -f vppc.sql -o vppc.diag
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -H -f vppc.sql -o vppc_diag.html
+
+
 */
+
 \pset border 2 
-select 'This is VCPP - vCenter Proactive Postgres Check to detect common issues of vCenter. This script is similar to VPOC that created for vCenter running on Oracle. There is nothing destructive in this script but still I should warn you that use-at-your-own-risk.' as "Description and Disclaimer";
-\pset title 'VCCP - vCenter  Proactive Postgresql Checks'
+
+select '################################### VPPC - vCenter  Proactive Postgresql Checks ###################################' as " Tools Name ";
+
+
+
+select 'This is VPPC - vCenter Proactive Postgres Check to detect common issues of vCenter. This script is similar to VPOC that created for vCenter running on Oracle. There is nothing destructive in this script but still I should warn you that use-at-your-own-risk.' as "Description and Disclaimer";
+
+
+--set search_path to vpx, public;
+
 \pset title 'DB Version'
 select version();
 \pset title 'vCenter Version'
-select version_value as "Version" from vpx_version;
+select version_value as "    Version    " from vpx_version;
 \pset title 'Script ran'
-select 'Today date : ' || current_date as Date;
+select 'Today date    :    ' || current_date as Date;
 
 \pset title 'Hist Stat Data'
 select relname as "Table Name", reltuples as "Counts" from pg_class where relname like 'vpx_hist%' order by 1;
@@ -40,7 +60,7 @@ where pl.lanname NOT IN ('c','internal')
   and pn.nspname <> 'information_schema';
 
 \pset title 'KB Reference'
-select 'https://ikb.vmware.com/kb/2033096 ' as "URL Link";
+select 'https://ikb.vmware.com/kb/2033096 ' as "Job Performance KB";
 
 \pset title 'Procedure Source Codes'
 
@@ -55,13 +75,6 @@ inner join pg_language pl on (pp.prolang = pl.oid)
 where pl.lanname NOT IN ('c','internal')
   and pn.nspname NOT LIKE 'pg_%'
   and pn.nspname <> 'information_schema';
-
-
-SELECT  p.proname
-FROM    pg_catalog.pg_namespace n
-JOIN    pg_catalog.pg_proc p
-ON      p.pronamespace = n.oid
-WHERE   n.nspname = 'vc';
 
 
 select p.proname, p.prosrc FROM  pg_catalog.pg_namespace n
@@ -102,8 +115,15 @@ ORDER BY size DESC
 LIMIT 10;
 
 \pset title  'Top 5 problematic tables' 
- \d vpx_event; \d vpx_event_arg; \d vpx_task; \d VPX_SAMPLE_TIME1;  \d  VPX_SAMPLE_TIME2;  \d VPX_SAMPLE_TIME3; \d VPX_SAMPLE_TIME4; 
+\d vpx_event; 
+\d vpx_event_arg; 
+\d vpx_task; 
+\d VPX_SAMPLE_TIME1;  
+\d VPX_SAMPLE_TIME2;  
+\d VPX_SAMPLE_TIME3; 
+\d VPX_SAMPLE_TIME4; 
 
+\pset title 'Postgresql parameter files'
 show all;
 
 \pset title 'Files'
@@ -117,5 +137,9 @@ select name, context, unit, setting from pg_settings where name in ('listen_addr
 \pset title 'Archive Setup'
 select name, context, unit, setting from pg_settings where name like '%archive%';
 
-\pset title 'vCenter parameters'
-select * from vpx_parameter;
+\pset title 'Filesystem'
+\echo `df -h`
+\echo `du -sx /storage/log/*/* |sort -n`
+\echo `ps -ef|grep postgres|wc -l`
+\echo `ps -ef|grep postgres|grep postmaster`
+
