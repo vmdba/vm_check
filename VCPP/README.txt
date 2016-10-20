@@ -12,10 +12,10 @@ Other ways to run it with either text or html.
 
 
 
-Example of the report is provided.
-
 ###############################################################################
 
 This script contains 2 pieces. When user runs it, there are output from the prompt that reminding user to looking into the storage where commonly an issue for postgresql. The second part, is the vCenter Server performance chart related data such as table counts and stats levels which typically causing overall performance and functional issues to the vCenter.
 
-Since the script is fairly lightweight, user can run it withint he server where the postgresql reside without changing much of the postgres.conf listener and pg_hba.conf permission.
+Since the script is fairly lightweight, user can run it withint he server where the postgresql reside without changing much of the postgres.conf listener and pg_hba.conf permission. If user would like to run this remotely, it can be done. Just remember to add "trust" to IPv4 in the pg_hba.conf and uncommenting listener in postgresql.conf. Running remotely is pretty much the same as running it locally by having an additional parameter as -h.
+
+psql -U postgres -h 10.21.100.100 -d vcdb -f vccp.sql -o vppc.diag
