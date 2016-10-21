@@ -1,0 +1,152 @@
+vCenter Proactive Oracle Checking Tool for VC 4.1-5.0
+Script ran on : 08/20/14 13:38:45
+script name: 02@ general_chk.sql
+########################################################################
+Oracle version    : Oracle Database 11g Enterprise Edition Release 11.2.0.2.0 - 64bit Production
+Version           : VirtualCenter Database 5.0
+Product type      : VMware vCenter Server
+########################################################################
+VPXV_DEVICE_COUNTER exist and last refreshed on 08/20/14 13:35:07
+VPX_TEXT_ARRAY-----------> 46124
+VPX_TEMPTABLE0-----------> 108090
+VPX_EVENT-----------> 609308
+VPX_SAMPLE_TIME2-----------> 336
+VPX_SAMPLE_TIME1-----------> 292
+VPX_TEMPTABLE2-----------> 0
+VPX_STAT_COUNTER-----------> 2715987
+VPX_SAMPLE_TIME3-----------> 366
+VPX_EVENT_ARG-----------> 1319507
+VPX_SAMPLE_TIME4-----------> 363
+VPX_TASK-----------> 21529
+VPX_HIST_STAT1-----------> 28271972
+VPX_HIST_STAT2-----------> 25744895
+VPX_HIST_STAT3-----------> 27441003
+VPX_HIST_STAT4-----------> 25360065
+VPX_TEMPTABLE1-----------> 92339
+script name: 02@ procedures_chk.sql
+There might be an issue with missing VMware procedures
+List of Procedures in this database
+REBUILD_INDEX
+CLOBTOBLOB_SQLDEVELOPER
+UPSERT_LAST_EVENT_PROC
+VCI_POPULATEBASELINEUPDATES
+VCI_COMPBASELINECOMPLIANCELEAF
+VCI_MULTIBLCOMPLIANCELEAFLIST
+VCI_EXPAND_PATCHES
+VCI_QUERYENTITYBLSTATUS
+STATS_ROLLUP1_PROC
+STATS_ROLLUP2_PROC
+STATS_ROLLUP3_PROC
+PROCESS_TEMPTABLE0_PROC
+PROCESS_TEMPTABLE1_PROC
+PROCESS_TEMPTABLE2_PROC
+PURGE_STAT1_PROC
+PURGE_STAT2_PROC
+PURGE_STAT3_PROC
+DELETE_STATS_PROC
+PURGE_USAGE_STAT_PROC
+CLEANUP_EVENTS_TASKS_PROC
+PROCESS_LICENSE_SNAPSHOT_PROC
+CALC_TOPN1_PROC
+CALC_TOPN2_PROC
+CALC_TOPN3_PROC
+CALC_TOPN4_PROC
+CLEAR_TOPN1_PROC
+CLEAR_TOPN2_PROC
+CLEAR_TOPN3_PROC
+CLEAR_TOPN4_PROC
+RULE_TOPN1_PROC
+RULE_TOPN2_PROC
+RULE_TOPN3_PROC
+RULE_TOPN4_PROC
+PROCESS_PERFORMANCE_DATA_PROC
+LOAD_USAGE_STATS_PROC
+LOAD_STATS_PROC
+script name: 02@ schedulerchk.sql
+########################################################################
+User jobs for VPXADMIN
+ID JOB NAME  FAILED BROKEN    LAST RUN            NEXT RUN      TIME TAKEN
+__________________________________________________________________________________________________
+104  -  begin process_performance_data_proc; end;  -  0 -   N - 08/20/14 13:21:50 - 08/20/14 13:51:50 - 3693 sec
+77  -  begin cleanup_events_tasks_proc; end;  -  0 -   N - 08/20/14 13:00:16 - 08/20/14 19:00:16 - 45560 sec
+78  -  DELETE FROM VPX_PROPERTY_BULLETIN
+   WHERE EXISTS(
+          SELECT 1 FROM VPX_PROPERTY_BULLETIN TMP
+             WHERE TMP.OBJECT_MOID=VPX_PROPERTY_BULLETIN.OBJECT_MOID
+                AND
+TMP.OPERATION_TYPE=1
+                AND   TMP.GEN_NUMBER < (SELECT MAX(GEN_NUMBER) - 300000 FROM VPX_PROPERTY_BULLETIN));  -  0 -   N - 08/19/14 21:43:44 - 08/20/14 21:43:44 - 1004 sec
+79  -  rule_topn1_proc;  -  0 -   N - 08/20/14 13:37:44 - 08/20/14 13:47:44 - 7422830 sec
+80  -  rule_topn3_proc;  -  0 -   N - 08/20/14 12:12:46 - 08/20/14 14:12:46 - 1218393 sec
+81  -  rule_topn2_proc;  -  0 -   N - 08/20/14 13:21:50 - 08/20/14 13:51:50 - 5075460 sec
+82  -  rule_topn4_proc;  -  0 -   N - 08/19/14 21:58:12 - 08/20/14 21:58:12 - 50852 sec
+124  -  begin stats_rollup1_proc; Purge_Stat1_proc; end;  -  0 -   N - 08/20/14 13:12:13 - 08/20/14 13:42:13 - 13390479 sec
+125  -  begin stats_rollup2_proc; Purge_Stat2_proc; purge_usage_stat_proc; end;  -  0 -   N - 08/20/14 12:12:56 - 08/20/14 14:12:56 - 2661076 sec
+126  -  begin stats_rollup3_proc; Purge_Stat3_proc; end;  -  0 -   N - 08/19/14 21:25:55 - 08/20/14 21:25:55 - 122278 sec
+There is an indication that TOPN has some issue. Please check vpx_topn_error_log
+Example of errors :  Return code = -1; Step : 1; ORA-00001: unique constraint (VPXADMIN.PK_VPX_TOPN_PAST_DAY) violated
+script name: 02@ statistic_setting.sql
+########################################################################
+Number of VMs  :  2644
+Number of Hosts : 81
+	
+Interval during is in minutes
+STAT_TYPE  INTERVAL_DUR SAVE_DAYS  STATS_LVL  ENABLED
+____________________________________________________________________________________________________________________
+*Past day	5	24		1	1
+Past week	30	168		1	1
+Past mont	120	720		1	1
+Past year	1440	8760		1	1
+########################################################################
+script name: 02@ vmware_perf_index.sql
+########################################################################
+INDEX NAME              STATUS      TABLE NAME         PCT_FREE  LAST_ANALYZED
+_______________________________________________________________________________
+VPXI_DEVICE_COUNT_IDX      VALID     VPXV_DEVICE_COUNTER      10     08/05/14 22:09:56
+VPX_SAMPLE_TIME1_M1      VALID     VPX_SAMPLE_TIME1      10     08/19/14 22:00:21
+VPX_SAMPLE_TIME2_M1      VALID     VPX_SAMPLE_TIME2      10     08/19/14 22:04:07
+VPX_SAMPLE_TIME3_M1      VALID     VPX_SAMPLE_TIME3      10     08/19/14 22:05:56
+VPX_SAMPLE_TIME4_M1      VALID     VPX_SAMPLE_TIME4      10     08/16/14 22:14:57
+TABLE NAME          NUMBER OF ROWS              LAST_ANALYZED
+_______________________________________________________________
+VPX_SAMPLE_TIME1      08/19/14 22:00:21      291
+VPX_SAMPLE_TIME2      08/19/14 22:04:07      337
+VPX_SAMPLE_TIME3      08/19/14 22:05:56      358
+VPX_SAMPLE_TIME4      08/16/14 22:14:57      363
+
+USERNAME        GRANTED_ROLE                   ADM DEF OS_
+--------------- ------------------------------ --- --- ---
+VPXADMIN        CONNECT                        NO  YES NO
+VPXADMIN        DBA                            NO  YES NO
+VPXADMIN        RESOURCE                       NO  YES NO
+
+GRANTEE    OWNER  TABLE_NAME           GRANT PRIVILEGE                      GRA HIE
+---------- ------ -------------------- ----- ------------------------------ --- ---
+VPXADMIN   SYS    V_$LOGHIST           SYS   SELECT                         NO  NO
+VPXADMIN   SYS    V_$SYSMETRIC_HISTORY SYS   SELECT                         NO  NO
+VPXADMIN   SYS    V_$SYSSTAT           SYS   SELECT                         NO  NO
+VPXADMIN   SYS    V_$SYSTEM_EVENT      SYS   SELECT                         NO  NO
+VPXADMIN   SYS    DBA_INDEXES          SYS   SELECT                         NO  NO
+VPXADMIN   SYS    DBA_OBJECTS          SYS   SELECT                         NO  NO
+VPXADMIN   SYS    DBA_DATA_FILES       SYS   SELECT                         NO  NO
+VPXADMIN   SYS    DBA_TABLESPACES      SYS   SELECT                         NO  NO
+VPXADMIN   SYS    DBA_TEMP_FILES       SYS   SELECT                         NO  NO
+VPXADMIN   SYS    DBMS_JOB             SYS   EXECUTE                        NO  NO
+VPXADMIN   SYS    DBMS_LOCK            SYS   EXECUTE                        NO  NO
+
+USERNAME        PRIVILEGE                      ADM
+--------------- ------------------------------ ---
+VPXADMIN        CREATE SEQUENCE                NO
+VPXADMIN        CREATE SESSION                 NO
+VPXADMIN        CREATE MATERIALIZED VIEW       NO
+VPXADMIN        CREATE VIEW                    NO
+VPXADMIN        UNLIMITED TABLESPACE           NO
+VPXADMIN        CREATE SYNONYM                 NO
+VPXADMIN        CREATE TABLE                   NO
+
+TABLESPACE_NAME                     BYTES  MAX_BYTES     BLOCKS MAX_BLOCKS DRO
+------------------------------ ---------- ---------- ---------- ---------- ---
+VPX4K                                   0         -1          0         -1 YES
+VPX                            3.0127E+10         -1    3677608         -1 NO
+VPXIDX                                  0         -1          0         -1 YES
+VPXI_DEVICE_COUNT_IDX index already exist, no action required
