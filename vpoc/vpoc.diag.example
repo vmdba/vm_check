@@ -1,0 +1,149 @@
+vCenter Proactive Oracle Checking Tool for VC 4.1-5.0
+Script ran on : 10/04/16 14:08:17
+script name: 02@ general_chk.sql
+########################################################################
+Oracle version : Oracle Database 11g Enterprise Edition Release 11.1.0.7.0 - 64bit Production
+Version : VirtualCenter Database 5.0
+Product type : VMware vCenter Server
+########################################################################
+VPXV_DEVICE_COUNTER exist and last refreshed on 10/04/16 14:07:06
+VPX_EVENT-----------> 5466669
+VPX_EVENT_ARG-----------> 8985649
+VPX_TASK-----------> 121295
+VPX_STAT_COUNTER-----------> 277014
+VPX_SAMPLE_TIME2-----------> 3
+VPX_SAMPLE_TIME3-----------> 0
+VPX_SAMPLE_TIME4-----------> 103
+VPX_TEXT_ARRAY-----------> 37811
+VPX_HIST_STAT2-----------> 716616
+VPX_HIST_STAT3-----------> 2628223
+VPX_HIST_STAT4-----------> 9318328
+VPX_TEMPTABLE0-----------> 37784
+VPX_TEMPTABLE1-----------> 0
+VPX_TEMPTABLE2-----------> 0
+VPX_HIST_STAT1-----------> 15376488464
+VPX_SAMPLE_TIME1-----------> 75579
+script name: 02@ procedures_chk.sql
+There might be an issue with missing VMware procedures
+List of Procedures in this database
+CALC_TOPN1_PROC
+CALC_TOPN2_PROC
+CALC_TOPN3_PROC
+CALC_TOPN4_PROC
+CLEANUP_EVENTS_TASKS_PROC
+CLEAR_TOPN1_PROC
+CLEAR_TOPN2_PROC
+CLEAR_TOPN3_PROC
+CLEAR_TOPN4_PROC
+DELETE_STATS_PROC
+LOAD_STATS_PROC
+PROCESS_LICENSE_SNAPSHOT_PROC
+PROCESS_PERFORMANCE_DATA_PROC
+PROCESS_TEMPTABLE0_PROC
+PROCESS_TEMPTABLE1_PROC
+PROCESS_TEMPTABLE2_PROC
+PURGE_STAT1_PROC
+PURGE_STAT2_PROC
+PURGE_STAT3_PROC
+PURGE_USAGE_STAT_PROC
+RULE_TOPN1_PROC
+RULE_TOPN2_PROC
+RULE_TOPN3_PROC
+RULE_TOPN4_PROC
+STATS_ROLLUP1_PROC
+STATS_ROLLUP2_PROC
+STATS_ROLLUP3_PROC
+script name: 02@ schedulerchk.sql
+########################################################################
+User jobs for VCENTER
+ID JOB NAME FAILED BROKEN LAST RUN NEXT RUN TIME TAKEN
+__________________________________________________________________________________________________
+22 - begin stats_rollup2_proc; Purge_Stat2_proc; purge_usage_stat_proc; end; - 0 - N - 10/04/16 16:34:27 - 10/04/16 18:34:27 - 3607742 sec
+24 - begin cleanup_events_tasks_proc; end; - 0 - N - 10/04/16 14:21:51 - 10/04/16 20:21:51 - 277367 sec
+25 - rule_topn1_proc; - 0 - N - 10/04/16 11:58:31 - 10/04/16 16:05:26 - 38958458 sec
+26 - rule_topn3_proc; - 0 - N - 10/04/16 16:36:13 - 10/04/16 18:36:13 - 1855079 sec
+27 - rule_topn2_proc; - 0 - N - 10/04/16 16:39:14 - 10/04/16 17:09:14 - 4417594 sec
+28 - rule_topn4_proc; - 0 - N - 10/03/16 18:30:42 - 10/04/16 18:30:42 - 6644 sec
+29 - DELETE FROM VPX_PROPERTY_BULLETIN
+WHERE EXISTS(
+SELECT 1 FROM VPX_PROPERTY_BULLETIN TMP
+WHERE TMP.OBJECT_MOID=VPX_PROPERTY_BULLETIN.OBJECT_MOID
+
+AND TMP.OPERATION_TYPE=1
+AND TMP.GEN_NUMBER < (SELECT MAX(GEN_NUMBER) - 300000 FROM VPX_PROPERTY_BULLETIN)); - 0 - N - 10/03/16 20:17:58 - 10/04/16 20:17:58 - 211 sec
+21 - begin stats_rollup1_proc; Purge_Stat1_proc; end; - 16 - Y - 01/16/16 19:11:19 - 01/01/00 00:00:00 - 11211146 sec
+23 - begin stats_rollup3_proc; Purge_Stat3_proc; end; - 0 - N - 10/03/16 18:28:07 - 10/04/16 18:28:07 - 414739 sec
+30 - begin process_performance_data_proc; end; - 0 - N - 10/04/16 16:39:03 - 10/04/16 17:09:03 - 269807 sec
+There is an indication that TOPN has some issue. Please check vpx_topn_error_log
+Example of errors : Return code = -1; Step : 1; ORA-00001: unique constraint (VCENTER.PK_VPX_TOPN_PAST_DAY) violated
+script name: 02@ statistic_setting.sql
+########################################################################
+Number of VMs : 1641
+Number of Hosts : 104
+
+Interval during is in minutes
+STAT_TYPE INTERVAL_DUR SAVE_DAYS STATS_LVL ENABLED
+____________________________________________________________________________________________________________________
+*Past day 5 24 1 1
+*PastWeek 30 168 1 1
+PastMonth 120 720 1 1
+*PastYear 1440 8760 1 1
+########################################################################
+SP2-0310: unable to open file "invalidobj.diag"
+script name: 02@ vmware_perf_index.sql
+########################################################################
+INDEX NAME STATUS TABLE NAME PCT_FREE LAST_ANALYZED
+_______________________________________________________________________________
+VPXI_DEVICE_COUNT_IDX VALID VPXV_DEVICE_COUNTER 10 08/01/16 22:04:57
+VPX_SAMPLE_TIME1_M1 VALID VPX_SAMPLE_TIME1 10 09/26/16 22:04:26
+VPX_SAMPLE_TIME2_M1 VALID VPX_SAMPLE_TIME2 10 01/23/16 18:03:48
+VPX_SAMPLE_TIME3_M1 VALID VPX_SAMPLE_TIME3 10 02/15/16 22:00:39
+VPX_SAMPLE_TIME4_M1 VALID VPX_SAMPLE_TIME4 10 09/27/16 22:02:45
+TABLE NAME NUMBER OF ROWS LAST_ANALYZED
+_______________________________________________________________
+VPX_SAMPLE_TIME4 09/27/16 22:02:45 109
+VPX_SAMPLE_TIME3 02/15/16 22:00:39 0
+VPX_SAMPLE_TIME2 01/23/16 18:03:47 3
+VPX_SAMPLE_TIME1 09/26/16 22:04:25 73337
+
+NAME INTERVAL_DURATION_MIN SAVE_FOR_DAYS STATS_LEVEL E
+------------------------------ --------------------- ------------- ----------- -
+Past day 5 24 1 Y
+history.PastWeek 30 168 1 Y
+history.PastMonth 120 720 1 Y
+history.PastYear 1440 8760 1 Y
+
+NAME INTERVAL_DURATION_MIN SAVE_FOR_DAYS STATS_LEVEL E
+------------------------------ --------------------- ------------- ----------- -
+Past day 5 24 1 Y
+history.PastWeek 30 168 1 Y
+history.PastMonth 120 720 1 Y
+history.PastYear 1440 8760 1 Y
+
+USERNAME GRANTED_ROLE ADM DEF OS_
+--------------- ------------------------------ --- --- ---
+VCENTER CONNECT NO YES NO
+VCENTER DBA NO YES NO
+VCENTER RESOURCE NO YES NO
+
+GRANTEE OWNER TABLE_NAME GRANT PRIVILEGE GRA HIE
+---------- ------ -------------------- ----- ------------------------------ --- ---
+VCENTER SYS TEST_DIR SYS WRITE NO NO
+VCENTER SYS TEST_DIR SYS READ NO NO
+VCENTER SYS DBMS_LOCK SYS EXECUTE NO NO
+
+USERNAME PRIVILEGE ADM
+--------------- ------------------------------ ---
+VCENTER CREATE MATERIALIZED VIEW NO
+VCENTER SELECT ANY TABLE NO
+VCENTER EXECUTE ANY PROCEDURE NO
+VCENTER CREATE VIEW NO
+VCENTER UNLIMITED TABLESPACE NO
+VCENTER CREATE ANY TABLE NO
+VCENTER CREATE SESSION NO
+VCENTER CREATE ANY SEQUENCE NO
+
+TABLESPACE_NAME BYTES MAX_BYTES BLOCKS MAX_BLOCKS DRO
+------------------------------ ---------- ---------- ---------- ---------- ---
+VCENTER_OBJS 4.3628E+11 0 26628673 0 NO
+VPXI_DEVICE_COUNT_IDX index already exist, no action required
